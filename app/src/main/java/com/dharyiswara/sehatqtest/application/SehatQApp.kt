@@ -14,7 +14,6 @@ class SehatQApp : Application() {
             androidContext(this@SehatQApp)
             modules(
                 networkModule,
-                localModule,
                 repositoryModule,
                 viewModelModule,
                 commonModule

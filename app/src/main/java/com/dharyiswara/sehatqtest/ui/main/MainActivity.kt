@@ -1,4 +1,4 @@
-package com.dharyiswara.sehatqtest.ui
+package com.dharyiswara.sehatqtest.ui.main
 
 import com.dharyiswara.sehatqtest.R
 import com.dharyiswara.sehatqtest.base.BaseActivity
