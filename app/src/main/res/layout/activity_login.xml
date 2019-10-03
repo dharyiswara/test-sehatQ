@@ -65,6 +65,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tlUsername"
+                app:passwordToggleDrawable="@drawable/password_toggle_drawable"
                 app:passwordToggleEnabled="true"
                 app:passwordToggleTintMode="screen">
 
