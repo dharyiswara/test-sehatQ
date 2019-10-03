@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">SehatQ Test</string>
+    <string name="string_login">Login</string>
+    <string name="string_username">Username</string>
+    <string name="string_password">Password</string>
+    <string name="string_remember">Remember Me</string>
+    <string name="string_signin">Sign In</string>
+    <string name="string_facebook_signin">Sign In with Facebook</string>
+    <string name="string_google_signin">Sign In with Google</string>
 </resources>

@@ -25,6 +25,7 @@ buildscript {
         glideVersion = '4.9.0'
         okhttpVersion = '3.11.0'
         roomVersion = '2.1.0'
+        supportLibraryVersion = '28+'
 
         // Testing dependencies
         junitVersion = '4.12'
