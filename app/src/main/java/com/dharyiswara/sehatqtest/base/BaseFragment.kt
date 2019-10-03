@@ -28,6 +28,8 @@ abstract class BaseFragment : Fragment(), BaseView {
 
     override fun initEvent() {}
 
+    override fun loadingData(isFromSwipe: Boolean) {}
+
     override fun observeData() {}
 
 }

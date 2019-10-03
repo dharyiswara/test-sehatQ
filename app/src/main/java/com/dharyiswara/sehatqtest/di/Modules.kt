@@ -4,6 +4,8 @@ import com.dharyiswara.sehatqtest.helper.AppExecutors
 import com.dharyiswara.sehatqtest.network.NetworkFactory
 import com.dharyiswara.sehatqtest.preferences.UserSession
 import com.dharyiswara.sehatqtest.repository.HomepageRepository
+import com.dharyiswara.sehatqtest.ui.main.home.HomeViewModel
+import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val networkModule = module {
@@ -26,6 +28,8 @@ val repositoryModule = module {
 }
 
 val viewModelModule = module {
+
+    viewModel { HomeViewModel(get()) }
 
 }
 
