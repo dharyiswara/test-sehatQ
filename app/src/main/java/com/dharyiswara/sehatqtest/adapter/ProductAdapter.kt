@@ -1,15 +1,13 @@
-package com.dharyiswara.sehatqtest.ui.main.home.adapter
+package com.dharyiswara.sehatqtest.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.dharyiswara.sehatqtest.R
 import com.dharyiswara.sehatqtest.helper.extension.loadFromUrl
 import com.dharyiswara.sehatqtest.model.ProductPromo
 import kotlinx.android.synthetic.main.layout_item_product.view.*
-import org.jetbrains.anko.backgroundDrawable
 
 class ProductAdapter : RecyclerView.Adapter<ProductViewHolder>() {
 
@@ -47,12 +45,7 @@ class ProductViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         with(itemView) {
             ivProduct.loadFromUrl(product.imageUrl)
             tvTitle.text = product.title
-
-            if (product.isLoved())
-                ivLoved.backgroundDrawable = ContextCompat.getDrawable(context, R.drawable.ic_loved)
-            else
-                ivLoved.backgroundDrawable =
-                    ContextCompat.getDrawable(context, R.drawable.ic_not_loved)
+            tvPrice.text = product.price
             setOnClickListener {
 
             }

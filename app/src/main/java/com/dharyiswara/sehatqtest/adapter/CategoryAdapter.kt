@@ -1,4 +1,4 @@
-package com.dharyiswara.sehatqtest.ui.main.home.adapter
+package com.dharyiswara.sehatqtest.adapter
 
 import android.view.LayoutInflater
 import android.view.View

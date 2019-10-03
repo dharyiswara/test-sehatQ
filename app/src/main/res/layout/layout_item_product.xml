@@ -4,45 +4,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="16dp"
-    android:layout_marginTop="8dp"
-    android:layout_marginEnd="16dp"
-    android:layout_marginBottom="8dp"
-    android:orientation="vertical">
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginBottom="5dp"
+    android:orientation="horizontal">
 
-    <RelativeLayout
+    <ImageView
+        android:id="@+id/ivProduct"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/ic_no_image" />
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:background="@drawable/bg_line_product">
-
-        <ImageView
-            android:id="@+id/ivProduct"
-            android:layout_width="match_parent"
-            android:layout_height="430dp"
-            android:layout_centerInParent="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            app:srcCompat="@drawable/ic_no_image" />
-
-        <ImageView
-            android:id="@+id/ivLoved"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_alignParentBottom="true"
-            android:layout_margin="7dp"
-            app:srcCompat="@drawable/ic_not_loved" />
-
-    </RelativeLayout>
-
-    <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/arialmt_medium"
-        android:textColor="@color/colorBlack"
-        android:textSize="16dp"
-        tools:text="Ini nama barang satu" />
+        android:layout_marginEnd="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/arialmt_medium"
+            android:textColor="@color/colorBlack"
+            tools:text="Nama baju" />
+
+        <TextView
+            android:id="@+id/tvPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/arialmt_medium"
+            android:textColor="@color/colorBlack"
+            tools:text="$50" />
+
+    </LinearLayout>
 
 </LinearLayout>

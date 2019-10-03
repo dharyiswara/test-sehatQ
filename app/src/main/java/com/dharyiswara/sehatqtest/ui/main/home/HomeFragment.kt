@@ -1,5 +1,6 @@
 package com.dharyiswara.sehatqtest.ui.main.home
 
+import android.view.MotionEvent
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dharyiswara.sehatqtest.R
@@ -8,9 +9,11 @@ import com.dharyiswara.sehatqtest.helper.Status
 import com.dharyiswara.sehatqtest.helper.extension.gone
 import com.dharyiswara.sehatqtest.helper.extension.visible
 import com.dharyiswara.sehatqtest.model.Homepage
-import com.dharyiswara.sehatqtest.ui.main.home.adapter.CategoryAdapter
-import com.dharyiswara.sehatqtest.ui.main.home.adapter.ProductAdapter
+import com.dharyiswara.sehatqtest.adapter.CategoryAdapter
+import com.dharyiswara.sehatqtest.adapter.ProductHomeAdapter
+import com.dharyiswara.sehatqtest.ui.search.SearchActivity
 import kotlinx.android.synthetic.main.fragment_home.*
+import org.jetbrains.anko.support.v4.startActivity
 import org.jetbrains.anko.support.v4.toast
 import org.koin.android.ext.android.inject
 
@@ -20,7 +23,7 @@ class HomeFragment : BaseFragment() {
 
     private val categoryAdapter by lazy { CategoryAdapter() }
 
-    private val productAdapter by lazy { ProductAdapter() }
+    private val productAdapter by lazy { ProductHomeAdapter() }
 
     companion object {
         fun newInstance(): HomeFragment = HomeFragment()
@@ -46,9 +49,14 @@ class HomeFragment : BaseFragment() {
         ivListLoved.setOnClickListener {
             toast("List yg disukai")
         }
-        etSearch.setOnTouchListener { _, _ ->
-            toast("Search")
-            true
+        etSearch.setOnTouchListener { _, event ->
+            if (event?.action == MotionEvent.ACTION_DOWN) {
+                if (!swHome.isRefreshing)
+                    startActivity<SearchActivity>(
+                        SearchActivity.LIST_DATA to productAdapter.getProductList()
+                    )
+            }
+            false
         }
 
         swHome.setOnRefreshListener {

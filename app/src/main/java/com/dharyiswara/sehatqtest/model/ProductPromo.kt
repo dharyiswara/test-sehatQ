@@ -1,6 +1,7 @@
 package com.dharyiswara.sehatqtest.model
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class ProductPromo(
     @SerializedName("id") val id: String,
@@ -9,8 +10,10 @@ data class ProductPromo(
     @SerializedName("description") val description: String,
     @SerializedName("price") val price: String,
     @SerializedName("loved") val loved: Int
-) {
+) : Serializable {
+
     fun isLoved(): Boolean {
         return loved == 1
     }
+
 }
