@@ -7,4 +7,5 @@
     <string name="string_signin">Sign In</string>
     <string name="string_facebook_signin">Sign In with Facebook</string>
     <string name="string_google_signin">Sign In with Google</string>
+    <string name="string_warning_login">Input username or password!</string>
 </resources>

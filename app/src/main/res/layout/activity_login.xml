@@ -39,7 +39,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="10dp"
                 android:hint="@string/string_username"
-                app:hintAnimationEnabled="false"
+                app:hintEnabled="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvLogin">
@@ -48,7 +48,8 @@
                     android:id="@+id/etUsername"
                     style="@style/FormInputTextStyle"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:hint="@string/string_username" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -60,7 +61,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:hint="@string/string_password"
-                app:hintAnimationEnabled="false"
+                app:hintEnabled="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tlUsername"
@@ -71,7 +72,8 @@
                     android:id="@+id/etPassword"
                     style="@style/FormInputTextStyle"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:hint="@string/string_password" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -88,6 +90,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tlPassword" />
 
             <Button
+                android:id="@+id/btnLogin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
