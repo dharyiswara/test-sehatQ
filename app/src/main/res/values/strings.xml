@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">SehatQ Test</string>
+    <string name="string_login">Login</string>
+    <string name="string_username">Username</string>
+    <string name="string_password">Password</string>
+    <string name="string_remember">Remember Me</string>
+    <string name="string_signin">Sign In</string>
+    <string name="string_facebook_signin">Sign In with Facebook</string>
+    <string name="string_google_signin">Sign In with Google</string>
+    <string name="string_warning_login">Input username or password!</string>
+    <string name="string_home">Home</string>
+    <string name="string_feed">Feed</string>
+    <string name="string_cart">Cart</string>
+    <string name="string_profile">Profile</string>
+    <string name="string_buy">Buy</string>
+    <string name="string_share">Share via</string>
+    <string name="string_like">Liked</string>
+    <string name="string_dislike">Disliked</string>
+    <string name="string_success_buy">Item Bought Successfully</string>
+    <string name="string_failed_buy">Item Failed to Buy</string>
+    <string name="string_history_purchased">Purchased History</string>
+    <string name="string_logout">Logout</string>
+</resources>
