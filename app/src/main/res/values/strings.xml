@@ -19,4 +19,5 @@
     <string name="string_success_buy">Item Bought Successfully</string>
     <string name="string_failed_buy">Item Failed to Buy</string>
     <string name="string_history_purchased">Purchased History</string>
+    <string name="string_logout">Logout</string>
 </resources>

@@ -8,6 +8,7 @@ import com.dharyiswara.sehatqtest.helper.BlankFragment
 import com.dharyiswara.sehatqtest.helper.extension.inTransaction
 import com.dharyiswara.sehatqtest.preferences.UserSession
 import com.dharyiswara.sehatqtest.ui.main.home.HomeFragment
+import com.dharyiswara.sehatqtest.ui.main.profile.ProfileFragment
 import io.realm.Realm
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.android.inject
@@ -22,7 +23,7 @@ class MainActivity : BaseActivity() {
 
     private val cartFragment by lazy { BlankFragment.newInstance(getString(R.string.string_cart)) }
 
-    private val profileFragment by lazy { BlankFragment.newInstance(getString(R.string.string_profile)) }
+    private val profileFragment by lazy { ProfileFragment.newInstance() }
 
     private val productRealm by lazy { ProductRealm(Realm.getDefaultInstance()) }
 
