@@ -16,4 +16,6 @@
     <string name="string_share">Share via</string>
     <string name="string_like">Liked</string>
     <string name="string_dislike">Disliked</string>
+    <string name="string_success_buy">Item Bought Successfully</string>
+    <string name="string_failed_buy">Item Failed to Buy</string>
 </resources>

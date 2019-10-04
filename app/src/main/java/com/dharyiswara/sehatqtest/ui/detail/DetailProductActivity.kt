@@ -4,8 +4,10 @@ import android.content.Intent
 import androidx.core.content.ContextCompat
 import com.dharyiswara.sehatqtest.R
 import com.dharyiswara.sehatqtest.base.BaseActivity
+import com.dharyiswara.sehatqtest.database.ProductRealm
 import com.dharyiswara.sehatqtest.helper.extension.loadFromUrl
 import com.dharyiswara.sehatqtest.model.ProductPromo
+import io.realm.Realm
 import kotlinx.android.synthetic.main.activity_detail_product.*
 import org.jetbrains.anko.backgroundDrawable
 import org.jetbrains.anko.toast
@@ -13,6 +15,16 @@ import org.jetbrains.anko.toast
 class DetailProductActivity : BaseActivity() {
 
     private var product: ProductPromo? = null
+
+    private val productRealm by lazy {
+        ProductRealm(Realm.getDefaultInstance(),
+            {
+                toast(getString(R.string.string_success_buy))
+            },
+            {
+                toast(getString(R.string.string_failed_buy))
+            })
+    }
 
     companion object {
 
@@ -37,7 +49,9 @@ class DetailProductActivity : BaseActivity() {
         super.initEvent()
 
         btnBuy.setOnClickListener {
-            toast("Buy")
+            product?.let {
+                productRealm.buyProduct(it)
+            }
         }
 
         ivShare.setOnClickListener {
