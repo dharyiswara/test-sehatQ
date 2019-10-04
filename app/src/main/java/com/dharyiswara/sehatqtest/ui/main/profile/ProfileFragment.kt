@@ -4,6 +4,7 @@ import androidx.core.content.ContextCompat
 import com.dharyiswara.sehatqtest.R
 import com.dharyiswara.sehatqtest.base.BaseFragment
 import com.dharyiswara.sehatqtest.database.ProductRealm
+import com.dharyiswara.sehatqtest.helper.LogoutHelper
 import com.dharyiswara.sehatqtest.helper.extension.loadFromUrl
 import com.dharyiswara.sehatqtest.preferences.UserSession
 import com.dharyiswara.sehatqtest.ui.history.PurchaseHistoryActivity
@@ -39,6 +40,7 @@ class ProfileFragment : BaseFragment() {
             startActivity<PurchaseHistoryActivity>()
         }
         tvLogout.setOnClickListener {
+            LogoutHelper.facebookLogout()
             userSession.logout()
             productRealm.reset()
             startActivity<LoginActivity>()
