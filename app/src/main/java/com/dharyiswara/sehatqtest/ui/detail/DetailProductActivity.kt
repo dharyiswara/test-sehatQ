@@ -39,7 +39,7 @@ class DetailProductActivity : BaseActivity() {
     override fun initView() {
         super.initView()
 
-        product = intent?.getSerializableExtra(PRODUCT) as ProductPromo
+        product = intent?.getParcelableExtra<ProductPromo>(PRODUCT)
         product?.let {
             setProduct(it)
         }

@@ -12,8 +12,8 @@
 
     <ImageView
         android:id="@+id/ivProduct"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:scaleType="fitCenter"
         app:srcCompat="@drawable/ic_no_image" />
 
@@ -31,6 +31,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/arialmt_medium"
             android:textColor="@color/colorBlack"
+            android:textSize="16sp"
             tools:text="Nama baju" />
 
         <TextView
@@ -40,6 +41,7 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/arialmt_medium"
             android:textColor="@color/colorBlack"
+            android:textSize="16sp"
             tools:text="$50" />
 
     </LinearLayout>

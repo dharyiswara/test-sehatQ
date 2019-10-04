@@ -1,10 +1,12 @@
 package com.dharyiswara.sehatqtest.model
 
+import android.os.Parcelable
 import com.dharyiswara.sehatqtest.helper.TextUtils
 import com.google.gson.annotations.SerializedName
 import io.realm.RealmObject
-import java.io.Serializable
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 open class ProductPromo(
     @SerializedName("id") var id: String = TextUtils.BLANK,
     @SerializedName("imageUrl") var imageUrl: String = TextUtils.BLANK,
@@ -12,7 +14,7 @@ open class ProductPromo(
     @SerializedName("description") var description: String = TextUtils.BLANK,
     @SerializedName("price") var price: String = TextUtils.BLANK,
     @SerializedName("loved") var loved: Int = 0
-) : RealmObject(), Serializable {
+) : RealmObject(), Parcelable {
 
     fun isLoved(): Boolean {
         return loved == 1
