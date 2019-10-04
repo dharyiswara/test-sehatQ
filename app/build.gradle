@@ -30,6 +30,11 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    sourceSets {
+        androidTest.java.srcDirs += "src/androidTest/java"
+        test.java.srcDirs += "src/androidTest/java"
+    }
 }
 
 dependencies {
@@ -72,6 +77,11 @@ dependencies {
     implementation "com.android.support:multidex:$multidexVersion"
 
     testImplementation "junit:junit:$junitVersion"
+    testImplementation "org.mockito:mockito-inline:$mockitoVersion"
+    testImplementation "androidx.arch.core:core-testing:$coreTestingVersion"
+
     androidTestImplementation "androidx.test:runner:$runnerVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
+    androidTestImplementation "org.mockito:mockito-inline:$mockitoVersion"
+    androidTestImplementation "androidx.arch.core:core-testing:$coreTestingVersion"
 }
