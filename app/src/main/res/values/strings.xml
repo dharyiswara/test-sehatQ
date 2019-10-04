@@ -12,4 +12,8 @@
     <string name="string_feed">Feed</string>
     <string name="string_cart">Cart</string>
     <string name="string_profile">Profile</string>
+    <string name="string_buy">Buy</string>
+    <string name="string_share">Share via</string>
+    <string name="string_like">Liked</string>
+    <string name="string_dislike">Disliked</string>
 </resources>

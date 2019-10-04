@@ -11,14 +11,15 @@ import com.dharyiswara.sehatqtest.model.ProductPromo
 import kotlinx.android.synthetic.main.layout_item_product_home.view.*
 import org.jetbrains.anko.backgroundDrawable
 
-class ProductHomeAdapter : RecyclerView.Adapter<ProductHomeViewHolder>() {
+class ProductHomeAdapter(private val listener: (ProductPromo) -> Unit) :
+    RecyclerView.Adapter<ProductHomeViewHolder>() {
 
     private val productList = mutableListOf<ProductPromo>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductHomeViewHolder {
         return ProductHomeViewHolder(
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.layout_item_product_home, parent, false)
+                .inflate(R.layout.layout_item_product_home, parent, false), listener
         )
     }
 
@@ -43,7 +44,8 @@ class ProductHomeAdapter : RecyclerView.Adapter<ProductHomeViewHolder>() {
 }
 
 
-class ProductHomeViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+class ProductHomeViewHolder(view: View, private val listener: (ProductPromo) -> Unit) :
+    RecyclerView.ViewHolder(view) {
 
     fun bind(product: ProductPromo) {
         with(itemView) {
@@ -56,7 +58,7 @@ class ProductHomeViewHolder(view: View) : RecyclerView.ViewHolder(view) {
                 ivLoved.backgroundDrawable =
                     ContextCompat.getDrawable(context, R.drawable.ic_not_loved)
             setOnClickListener {
-
+                listener.invoke(product)
             }
         }
 

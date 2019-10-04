@@ -11,6 +11,7 @@ import com.dharyiswara.sehatqtest.helper.extension.visible
 import com.dharyiswara.sehatqtest.model.Homepage
 import com.dharyiswara.sehatqtest.adapter.CategoryAdapter
 import com.dharyiswara.sehatqtest.adapter.ProductHomeAdapter
+import com.dharyiswara.sehatqtest.ui.detail.DetailProductActivity
 import com.dharyiswara.sehatqtest.ui.search.SearchActivity
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.jetbrains.anko.support.v4.startActivity
@@ -23,7 +24,13 @@ class HomeFragment : BaseFragment() {
 
     private val categoryAdapter by lazy { CategoryAdapter() }
 
-    private val productAdapter by lazy { ProductHomeAdapter() }
+    private val productAdapter by lazy {
+        ProductHomeAdapter {
+            startActivity<DetailProductActivity>(
+                DetailProductActivity.PRODUCT to it
+            )
+        }
+    }
 
     companion object {
         fun newInstance(): HomeFragment = HomeFragment()

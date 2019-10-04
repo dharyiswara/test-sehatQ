@@ -9,7 +9,7 @@ data class ProductPromo(
     @SerializedName("title") val title: String,
     @SerializedName("description") val description: String,
     @SerializedName("price") val price: String,
-    @SerializedName("loved") val loved: Int
+    @SerializedName("loved") var loved: Int
 ) : Serializable {
 
     fun isLoved(): Boolean {
