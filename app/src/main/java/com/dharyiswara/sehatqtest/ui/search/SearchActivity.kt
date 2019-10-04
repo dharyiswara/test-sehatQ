@@ -37,7 +37,7 @@ class SearchActivity : BaseActivity() {
     override fun initView() {
         super.initView()
 
-        productList = intent.getSerializableExtra(LIST_DATA) as List<ProductPromo>
+        productList = intent.getParcelableArrayListExtra(LIST_DATA)
         with(rvSearch) {
             layoutManager = LinearLayoutManager(this@SearchActivity)
             adapter = productAdapter
