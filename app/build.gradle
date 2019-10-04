@@ -61,6 +61,7 @@ dependencies {
     implementation "org.koin:koin-android-viewmodel:$koinVersion"
 
     implementation "androidx.room:room-runtime:$roomVersion"
+    kapt "androidx.room:room-compiler:$roomVersion"
 
     implementation "de.hdodenhof:circleimageview:$circleImageViewVersion"
 

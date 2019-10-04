@@ -23,7 +23,7 @@ val networkModule = module {
 
 val repositoryModule = module {
 
-    single { HomepageRepository(get(), get()) }
+    single { HomepageRepository(get(), get(), get()) }
 
 }
 
@@ -38,5 +38,13 @@ val commonModule = module {
     single { AppExecutors() }
 
     single { UserSession(get()) }
+
+}
+
+val databaseModule = module {
+
+    single { makeDatabase(get()) }
+
+    single { makeHomepageDao(get()) }
 
 }
