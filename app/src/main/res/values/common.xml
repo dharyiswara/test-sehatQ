@@ -2,4 +2,5 @@
 <resources>
     <string name="base_url">https://private-4639ce-ecommerce56.apiary-mock.com</string>
     <string name="facebook_app_id">1079914675535405</string>
+    <string name="default_web_client_id" translatable="false">14933995943-di6akvtmebimqc7u8fj47mvtss956kdl.apps.googleusercontent.com</string>
 </resources>

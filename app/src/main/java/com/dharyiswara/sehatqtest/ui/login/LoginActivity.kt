@@ -15,6 +15,11 @@ import com.facebook.FacebookException
 import com.facebook.GraphRequest
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
+import com.google.android.gms.auth.api.Auth
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.auth.api.signin.GoogleSignInResult
+import com.google.android.gms.common.api.GoogleApiClient
+import com.google.android.gms.common.api.Scope
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.activity_login.*
@@ -29,6 +34,8 @@ class LoginActivity : BaseActivity() {
 
     private var callbackManager: CallbackManager? = null
 
+    private var googleApiClient: GoogleApiClient? = null
+
     companion object {
         const val PUBLIC_PROFILE = "public_profile"
         const val FACEBOOK_NAME = "name"
@@ -36,6 +43,8 @@ class LoginActivity : BaseActivity() {
         const val PROFILE = "profile"
         const val PARAMETERS = "id, name, email, picture.width(800).height(800)"
         const val FIELDS = "fields"
+
+        const val GOOGLE_SIGN_IN_REQUEST = 121
     }
 
     override fun getLayoutResId(): Int = R.layout.activity_login
@@ -43,6 +52,7 @@ class LoginActivity : BaseActivity() {
     override fun initView() {
         super.initView()
         setupFacebook()
+        setupGoogle()
     }
 
     override fun initEvent() {
@@ -62,11 +72,34 @@ class LoginActivity : BaseActivity() {
             val params = listOf(PUBLIC_PROFILE)
             LoginManager.getInstance().logInWithReadPermissions(this, params)
         }
+
+        clGoogle.setOnClickListener {
+            googleApiClient?.let {
+                if (!it.isConnecting) {
+                    val signInIntent = Auth.GoogleSignInApi.getSignInIntent(it)
+                    startActivityForResult(signInIntent, GOOGLE_SIGN_IN_REQUEST)
+                }
+            }
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        callbackManager?.onActivityResult(requestCode, resultCode, data)
+        when (requestCode) {
+            GOOGLE_SIGN_IN_REQUEST -> {
+                val result = Auth.GoogleSignInApi.getSignInResultFromIntent(data)
+                loginGoogle(result)
+            }
+            else -> callbackManager?.onActivityResult(requestCode, resultCode, data)
+        }
+    }
+
+    override fun onDestroy() {
+        googleApiClient?.let {
+            it.stopAutoManage(this)
+            it.disconnect()
+        }
+        super.onDestroy()
     }
 
     private fun login(username: String, imageUrl: String = TextUtils.BLANK) {
@@ -124,6 +157,33 @@ class LoginActivity : BaseActivity() {
         val gson = Gson()
         val type = object : TypeToken<FacebookPicture>() {}.type
         return gson.fromJson(json, type)
+    }
+
+    private fun setupGoogle() {
+
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestId()
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestServerAuthCode(getString(R.string.default_web_client_id))
+            .requestScopes(Scope(PROFILE))
+            .requestEmail()
+            .build()
+
+        googleApiClient = GoogleApiClient.Builder(this)
+            .enableAutoManage(this) { connectionResult ->
+                Log.e("Google", "Google error login : ${connectionResult.errorMessage}")
+            }
+            .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+            .build()
+    }
+
+    private fun loginGoogle(result: GoogleSignInResult) {
+        if (result.isSuccess) {
+            val acct = result.signInAccount
+            acct?.let {
+                login(it.displayName ?: TextUtils.BLANK, it.photoUrl?.toString() ?: TextUtils.BLANK)
+            }
+        }
     }
 
 }

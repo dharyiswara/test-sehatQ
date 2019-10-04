@@ -20,6 +20,8 @@ class ProfileFragment : BaseFragment() {
 
     private val productRealm by lazy { ProductRealm(Realm.getDefaultInstance()) }
 
+    private val logoutHelper by lazy { LogoutHelper(requireContext()) }
+
     companion object {
 
         fun newInstance(): ProfileFragment = ProfileFragment()
@@ -32,6 +34,7 @@ class ProfileFragment : BaseFragment() {
         super.initView()
 
         fetchProfile()
+        logoutHelper
     }
 
     override fun initEvent() {
@@ -40,7 +43,7 @@ class ProfileFragment : BaseFragment() {
             startActivity<PurchaseHistoryActivity>()
         }
         tvLogout.setOnClickListener {
-            LogoutHelper.facebookLogout()
+            logoutHelper.logout()
             userSession.logout()
             productRealm.reset()
             startActivity<LoginActivity>()
