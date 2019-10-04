@@ -93,6 +93,7 @@ class HomeFragment : BaseFragment() {
                         getHomepageSuccess(response[0].homepage)
                     }
                 }
+                Status.EMPTY -> stopLoading()
                 Status.ERROR -> {
                     stopLoading()
                     it.throwable?.printStackTrace()
