@@ -17,6 +17,7 @@ android {
         vectorDrawables.useSupportLibrary = true
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -33,7 +34,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
     implementation "androidx.appcompat:appcompat:$appCompatVersion"
     implementation "androidx.core:core-ktx:$ktxVersion"
     implementation "androidx.constraintlayout:constraintlayout:$constraintVersion"
@@ -65,7 +66,10 @@ dependencies {
 
     implementation "de.hdodenhof:circleimageview:$circleImageViewVersion"
 
-    implementation 'com.facebook.android:facebook-login:[5,6)'
+    implementation "com.facebook.android:facebook-login:$facebookVersion"
+    implementation "com.google.android.gms:play-services-auth:$googleVersion"
+
+    implementation "com.android.support:multidex:$multidexVersion"
 
     testImplementation "junit:junit:$junitVersion"
     androidTestImplementation "androidx.test:runner:$runnerVersion"
