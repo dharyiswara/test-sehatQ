@@ -3,10 +3,12 @@ package com.dharyiswara.sehatqtest.ui.main
 import androidx.fragment.app.Fragment
 import com.dharyiswara.sehatqtest.R
 import com.dharyiswara.sehatqtest.base.BaseActivity
+import com.dharyiswara.sehatqtest.database.ProductRealm
 import com.dharyiswara.sehatqtest.helper.BlankFragment
 import com.dharyiswara.sehatqtest.helper.extension.inTransaction
 import com.dharyiswara.sehatqtest.preferences.UserSession
 import com.dharyiswara.sehatqtest.ui.main.home.HomeFragment
+import io.realm.Realm
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.android.inject
 
@@ -21,6 +23,8 @@ class MainActivity : BaseActivity() {
     private val cartFragment by lazy { BlankFragment.newInstance(getString(R.string.string_cart)) }
 
     private val profileFragment by lazy { BlankFragment.newInstance(getString(R.string.string_profile)) }
+
+    private val productRealm by lazy { ProductRealm(Realm.getDefaultInstance()) }
 
     override fun getLayoutResId(): Int = R.layout.activity_main
 
@@ -64,7 +68,10 @@ class MainActivity : BaseActivity() {
     }
 
     override fun onBackPressed() {
-        if (!userSession.isRemember) userSession.logout()
+        if (!userSession.isRemember) {
+            productRealm.reset()
+            userSession.logout()
+        }
         super.onBackPressed()
     }
 
