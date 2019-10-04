@@ -9,11 +9,20 @@ import com.dharyiswara.sehatqtest.adapter.ProductAdapter
 import com.dharyiswara.sehatqtest.base.BaseActivity
 import com.dharyiswara.sehatqtest.helper.extension.hideKeyboard
 import com.dharyiswara.sehatqtest.model.ProductPromo
+import com.dharyiswara.sehatqtest.ui.detail.DetailProductActivity
 import kotlinx.android.synthetic.main.activity_search.*
+import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.support.v4.startActivity
 
 class SearchActivity : BaseActivity() {
 
-    private val productAdapter by lazy { ProductAdapter() }
+    private val productAdapter by lazy {
+        ProductAdapter {
+            startActivity<DetailProductActivity>(
+                DetailProductActivity.PRODUCT to it
+            )
+        }
+    }
 
     private var productList = listOf<ProductPromo>()
 

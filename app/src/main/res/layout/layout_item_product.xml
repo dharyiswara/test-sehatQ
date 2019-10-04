@@ -14,7 +14,7 @@
         android:id="@+id/ivProduct"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:scaleType="centerCrop"
+        android:scaleType="fitCenter"
         app:srcCompat="@drawable/ic_no_image" />
 
     <LinearLayout

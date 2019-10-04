@@ -9,14 +9,15 @@ import com.dharyiswara.sehatqtest.helper.extension.loadFromUrl
 import com.dharyiswara.sehatqtest.model.ProductPromo
 import kotlinx.android.synthetic.main.layout_item_product.view.*
 
-class ProductAdapter : RecyclerView.Adapter<ProductViewHolder>() {
+class ProductAdapter(private val listener: (ProductPromo) -> Unit) :
+    RecyclerView.Adapter<ProductViewHolder>() {
 
     private val productList = mutableListOf<ProductPromo>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
         return ProductViewHolder(
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.layout_item_product, parent, false)
+                .inflate(R.layout.layout_item_product, parent, false), listener
         )
     }
 
@@ -39,7 +40,8 @@ class ProductAdapter : RecyclerView.Adapter<ProductViewHolder>() {
 }
 
 
-class ProductViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+class ProductViewHolder(view: View, private val listener: (ProductPromo) -> Unit) :
+    RecyclerView.ViewHolder(view) {
 
     fun bind(product: ProductPromo) {
         with(itemView) {
@@ -47,7 +49,7 @@ class ProductViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             tvTitle.text = product.title
             tvPrice.text = product.price
             setOnClickListener {
-
+                listener.invoke(product)
             }
         }
 
