@@ -4,6 +4,7 @@ import android.os.Handler
 import com.dharyiswara.sehatqtest.R
 import com.dharyiswara.sehatqtest.base.BaseActivity
 import com.dharyiswara.sehatqtest.database.ProductRealm
+import com.dharyiswara.sehatqtest.helper.LogoutHelper
 import com.dharyiswara.sehatqtest.preferences.UserSession
 import com.dharyiswara.sehatqtest.ui.login.LoginActivity
 import com.dharyiswara.sehatqtest.ui.main.MainActivity
@@ -17,6 +18,8 @@ class SplashActivity : BaseActivity() {
 
     private val productRealm by lazy { ProductRealm(Realm.getDefaultInstance()) }
 
+    private val logoutHelper by lazy { LogoutHelper(this) }
+
     companion object {
 
         const val DELAY_SECOND = 4000L
@@ -27,6 +30,7 @@ class SplashActivity : BaseActivity() {
 
     override fun initView() {
         super.initView()
+        logoutHelper
         Handler().postDelayed({
             when {
                 userSession.isRemember -> {
@@ -37,6 +41,7 @@ class SplashActivity : BaseActivity() {
                 }
                 else -> {
                     productRealm.reset()
+                    logoutHelper.logout()
                     startActivity<LoginActivity>()
                 }
             }
