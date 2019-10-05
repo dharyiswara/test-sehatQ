@@ -49,6 +49,8 @@ class HomeFragment : BaseFragment() {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = productAdapter
         }
+        categoryAdapter.clearData()
+        productAdapter.clearData()
     }
 
     override fun initEvent() {
